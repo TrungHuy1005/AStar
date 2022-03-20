@@ -25,11 +25,11 @@ def AStar(start, goal):
     curCityTotalCost = previous[curCity]['total_cost'] - heuristic[curCity] # Chi phí để đi từ start đến curCity
     
     if curCity != goal:
-      for city in myMap[curCity].keys(): # Các thành phố có thể đi đến được từ curCity
+      for city in myMap[curCity].keys(): # Các đỉnh có thể đi đến được từ curCity
         cityTotalCost = previous[city]['total_cost'] # Chi phí được tính ở bước trước đó
         totalCost = myMap[curCity][city]['cost'] + curCityTotalCost + heuristic[city] # Chi phí để đi từ start -> curCity -> city 
         
-        # Nếu chưa đi qua thành phố này hoặc chi phi đi từ start -> curCity -> city tốt hơn chi phí trước đó
+        # Nếu chưa đi qua đỉnh này hoặc chi phi đi từ start -> curCity -> city tốt hơn chi phí trước đó
         if previous[city]['from'] == None or totalCost < cityTotalCost :
           if q.count(city) != 0: # Nếu đã có city này trong hàng đợi thì xóa nó đi
             q.remove(city)
